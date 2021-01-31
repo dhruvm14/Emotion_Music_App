@@ -1,0 +1,18 @@
+.body {
+  height: 97vh;
+  background-image:url('./bglight.jpg');
+  background-size: cover;
+  background-repeat: repeat-y;
+}
+
+.body-content {
+  position: relative;
+  top: 11%;
+  margin-left: 5%;
+  color: grey;
+}
+
+.body-content > h1 {
+  font-weight: 700;
+  font-size: 1.2rem;
+}

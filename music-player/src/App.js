@@ -1,10 +1,13 @@
 import "./App.css";
+import Player from "./Player";
+import Body from "./Body";
+import Topbar from "./Topbar"
 
 function App() {
   return <div className="App">
-    {/* TopBar */}
-    {/* Body */}
-    {/* Player */}
+    <Topbar/>
+    <Body/>
+    <Player/>
   </div>;
 }
 

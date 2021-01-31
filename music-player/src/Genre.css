@@ -1,0 +1,11 @@
+.genre > p {
+    color: white;
+}
+
+.genre {
+    background-color: #62778A;
+    padding: 2px 13px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin: 5px 15px 5px 0px;
+}

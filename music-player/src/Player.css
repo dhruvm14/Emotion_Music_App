@@ -1,0 +1,11 @@
+.player {
+    position: fixed;
+    z-index: 2;
+    bottom: 0px;
+    width: 100vw;
+    height: 14%;
+    background-color:white;
+    box-shadow: 0px 0px 2px #888888;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
