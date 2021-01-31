@@ -12,6 +12,18 @@ function Body() {
         <Playlists />
         <h1>RECENTLY PLAYED</h1>
         <Playlists />
+        <h1>GENRES</h1>
+        <Genres />
+        <h1>PLAYLISTS BASED ON MOOD</h1>
+        <Playlists />
+        <h1>RECENTLY PLAYED</h1>
+        <Playlists />
+        <h1>GENRES</h1>
+        <Genres />
+        <h1>PLAYLISTS BASED ON MOOD</h1>
+        <Playlists />
+        <h1>RECENTLY PLAYED</h1>
+        <Playlists />
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
 .body {
-  height: 97vh;
+  height: auto;
   background-image:url('./bglight.jpg');
   background-size: cover;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
 }
 
 .body-content {
-  position: relative;
-  top: 11%;
-  margin-left: 5%;
+  padding-top: 90px;
+  padding-left: 40px;
   color: grey;
+  padding-bottom: 120px;
 }
 
 .body-content > h1 {

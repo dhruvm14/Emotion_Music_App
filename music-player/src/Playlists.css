@@ -1,4 +1,8 @@
 .playlists {
     display: flex;
-    overflow: hidden;
+    overflow-x: scroll;
 }
+
+.playlists::-webkit-scrollbar {
+    display: none;
+  }
