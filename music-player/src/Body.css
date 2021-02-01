@@ -1,8 +1,8 @@
 .body {
-  height: auto;
   background-image:url('./bglight.jpg');
   background-size: cover;
   background-repeat: repeat;
+  min-height: 100vh;
 }
 
 .body-content {

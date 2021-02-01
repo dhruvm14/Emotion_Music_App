@@ -73,10 +73,8 @@ function Player() {
           src="https://upload.wikimedia.org/wikipedia/en/c/cd/Taylor_Swift_-_Lover.png"
           alt="Taylor Swift"
         />
-        <span>
-          <p className="song-name">Lover</p>
-          <p className="artist">Taylor Swift</p>
-        </span>
+        <p className="song-name">Lover</p>
+        <p className="artist-name">Taylor Swift</p>
       </div>
       <div className="footer-center">
         <SkipPreviousIcon className="hovericon ico" />

@@ -3,48 +3,48 @@
     position: fixed;
     bottom: 0;
     height: 65px;
-    width: 97vw;
+    width: 100vw;
     color:  black;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 0px 2px #888888;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
 }
 
 .footer-left {
     flex: 0.25;
-    min-width: 250px;
-    display: flex;
     align-items: center;
 }
 
 .song-cover {
     object-fit: contain;
-    width: 80px;
+    width: 95px;
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
     margin-right: 20px;
     border-radius: 10px;
+    box-shadow: -4px 4px 6px grey;
 }
 
-.artist {
-    font-size: 0.8rem;
-    padding-right: 10px;
-    font-weight: 400;
+.song-name, .artist-name {
+    margin: 0;
+    position: relative;
+    top: 35px;
+    left: 40px;
 }
 
 .song-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color:black;
+    font-weight: 700;
+    font-size: 0.8rem;
 }
 
-
-
-span > p:hover {
-    text-decoration: underline;
-    cursor: default;
+.artist-name {
+    font-weight: 500;
+    font-size: 0.6rem;
+    color: grey
 }
+
 
 .footer-center {
     flex: 0.5;
@@ -52,17 +52,21 @@ span > p:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 150px;
+    max-width: 170px;
+    position: relative;
+    bottom: 23px;
+    border-bottom: 4px solid #FF5A81;
+    padding-bottom: 60px;
 }
 
 .footer-right {
-    min-width: 250px;
+    width: 250px;
     flex: 0.25;
     border: 2px;
     text-align: center;
     position: relative;
     top: 35%;
-    left: 9%
+    left: 25px;
 }
 
 .change-volume {
@@ -77,6 +81,7 @@ span > p:hover {
     background-color: black;
     position: relative;
     bottom: 9px;
+    border-radius: 200px;
 }
 
 .hovericon:hover {
@@ -88,17 +93,20 @@ span > p:hover {
     object-fit: contain;
     padding:3px;
     border-radius: 50%;
+    background-color: whitesmoke;
     box-shadow: 0 0 5px grey;
 }
 
 .play {
-    transform: scale(1.5);
+    transform: scale(1.7);
     color: #FF5A81;
-    padding: 0 10px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 46%, rgba(255,90,129,1) 4%);
+    border-radius: 50%;
+    box-shadow: 0 0 2px grey;
 }
 
 .play:hover {
-    transform: scale(1.7);
+    transform: scale(1.9);
     transition: all 0.2s;
     color: #FF5A81;
 }
