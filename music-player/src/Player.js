@@ -10,7 +10,7 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 
-function Player() {
+function Player({dark}) {
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [value, setValue] = React.useState(30);
@@ -66,7 +66,7 @@ function Player() {
       );
   }
   return (
-    <div className="player">
+    <div className={(dark)?"player player-dark" : "player"}>
       <div className="footer-left">
         <img
           className="song-cover"
@@ -77,17 +77,17 @@ function Player() {
         <p className="artist-name">Taylor Swift</p>
       </div>
       <div className="footer-center">
-        <SkipPreviousIcon className="hovericon ico" />
+        <SkipPreviousIcon className={(dark)?"hovericon ico ico-dark" : "hovericon ico"}/>
         <PlayCircleFilledIcon
           fontSize="large"
           className="hovericon play"
         />
-        <SkipNextIcon className="hovericon ico" />
+        <SkipNextIcon className={(dark)?"hovericon ico ico-dark" : "hovericon ico"} />
       </div>
       <div className="footer-right">
         <Grid container spacing={2}>
           <Grid item>
-            <MoodIcon className="hovericon ico" fontSize="small" />
+            <MoodIcon className={(dark)?"hovericon ico ico-dark" : "hovericon ico"} fontSize="small" />
           </Grid>
           <Grid item onClick={HandleClick}>
             <SetIcon />

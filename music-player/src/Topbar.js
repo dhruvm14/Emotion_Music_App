@@ -19,8 +19,6 @@ function Topbar({ changeMode, dark }) {
         <Switch
           checked={dark}
           onChange={changeMode}
-          name="checkedA"
-          inputProps={{ "aria-label": "secondary checkbox" }}
         />
         {dark ? (
           <NightsStayIcon style={{ color: "white" }} />
