@@ -107,7 +107,7 @@ function Player({dark}) {
                   value={value}
                   onChange={handleChange}
                   aria-labelledby="continuous-slider"
-                  style={{ color: "#FF5A81" }}
+                  style={{ color: "#F50057" }}
                 />
               )}
             </div>

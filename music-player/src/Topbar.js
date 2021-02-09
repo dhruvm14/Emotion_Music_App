@@ -5,7 +5,6 @@ import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 
 function Topbar({ changeMode, dark }) {
-  console.log(dark);
   return (
     <div className={(dark)?"topbar topbar-dark" : "topbar"}>
       <img
