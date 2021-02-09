@@ -7,7 +7,7 @@ import NightsStayIcon from "@material-ui/icons/NightsStay";
 function Topbar({ changeMode, dark }) {
   console.log(dark);
   return (
-    <div className="topbar">
+    <div className={(dark)?"topbar topbar-dark" : "topbar"}>
       <img
         className="app-logo"
         src="https://i.imgur.com/VjcL8Wz.png"
@@ -15,12 +15,18 @@ function Topbar({ changeMode, dark }) {
       />
       <h1 className="app-name">Music</h1>
       <div className="switch">
+        {dark ? <WbSunnyIcon style={{ color: "white" }} /> : <WbSunnyIcon />}
         <Switch
           checked={dark}
           onChange={changeMode}
           name="checkedA"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
+        {dark ? (
+          <NightsStayIcon style={{ color: "white" }} />
+        ) : (
+          <NightsStayIcon />
+        )}
       </div>
       <img
         className="profile"

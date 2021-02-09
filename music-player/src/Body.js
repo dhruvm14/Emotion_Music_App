@@ -2,9 +2,9 @@ import React from "react";
 import "./Body.css";
 import Playlists from "./Playlists";
 import Genres from "./Genres";
-function Body() {
+function Body({dark}) {
   return (
-    <div className="body">
+    <div className={(dark)?"body body-dark" : "body"}>
       <div className="body-content">
         <h1>GENRES</h1>
         <Genres />

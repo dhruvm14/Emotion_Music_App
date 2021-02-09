@@ -12,8 +12,8 @@ function App() {
   }
   return <div className="App">
     <Topbar changeMode={changeMode} dark={dark}/>
-    <Body/>
-    <Player/>
+    <Body dark={dark}/>
+    <Player dark={dark}/>
   </div>;
 }
 
