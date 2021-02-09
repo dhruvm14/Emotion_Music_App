@@ -1,6 +1,11 @@
 import React from "react";
 import "./Topbar.css";
-function Topbar() {
+import Switch from "@material-ui/core/Switch";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
+import NightsStayIcon from "@material-ui/icons/NightsStay";
+
+function Topbar({ changeMode, dark }) {
+  console.log(dark);
   return (
     <div className="topbar">
       <img
@@ -9,6 +14,14 @@ function Topbar() {
         alt="App Logo"
       />
       <h1 className="app-name">Music</h1>
+      <div className="switch">
+        <Switch
+          checked={dark}
+          onChange={changeMode}
+          name="checkedA"
+          inputProps={{ "aria-label": "secondary checkbox" }}
+        />
+      </div>
       <img
         className="profile"
         src="https://sdk.bitmoji.com/render/panel/74199580-3d4e-4477-8454-45c0e64aaa76-225575f1-433f-442b-8b9d-d1e8cc62edfc-v1.png?transparent=1&palette=1"

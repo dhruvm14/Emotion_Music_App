@@ -11,6 +11,11 @@
     color: grey;
 }
 
+.switch{
+    position: relative;
+    left: 950px;
+}
+
 .topbar-dark {
     background-color: black;
     color: white;
