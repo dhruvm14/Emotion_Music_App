@@ -11,6 +11,11 @@
     box-shadow: 0px 0px 2px #888888;
 }
 
+.player-dark {
+    background-color: black;
+    color: white;
+}
+
 .footer-left {
     flex: 0.25;
     align-items: center;
@@ -84,6 +89,10 @@
     border-radius: 200px;
 }
 
+.rule-dark {
+    background-color: white;
+}
+
 .hovericon:hover {
     transform: scale(1.2);
     transition: all 0.2s;
@@ -95,6 +104,10 @@
     border-radius: 50%;
     background-color: whitesmoke;
     box-shadow: 0 0 5px grey;
+}
+
+.ico-dark {
+    background-color: #5B5B5B;
 }
 
 .play {
