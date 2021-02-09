@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Player.css";
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import { Grid, Slider } from "@material-ui/core";
@@ -10,14 +10,20 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 
-function Player({dark}) {
+function Player({ dark }) {
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
-  const [value, setValue] = React.useState(30);
-  const [value2, setValue2] = React.useState(0);
+  const [value, setValue] = useState(30);
+  const [value2, setValue2] = useState(0);
+  const [popup,setpopup] = useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  function popout()
+  {
+    setpopup(prev=>!prev);
+  }
 
   function HandleClick() {
     if (clicked === false) {
@@ -66,7 +72,7 @@ function Player({dark}) {
       );
   }
   return (
-    <div className={(dark)?"player player-dark" : "player"}>
+    <div className={dark ? "player player-dark" : "player"}>
       <div className="footer-left">
         <img
           className="song-cover"
@@ -77,17 +83,25 @@ function Player({dark}) {
         <p className="artist-name">Taylor Swift</p>
       </div>
       <div className="footer-center">
-        <SkipPreviousIcon className={(dark)?"hovericon ico ico-dark" : "hovericon ico"}/>
-        <PlayCircleFilledIcon
-          fontSize="large"
-          className="hovericon play"
+        <SkipPreviousIcon
+          className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
         />
-        <SkipNextIcon className={(dark)?"hovericon ico ico-dark" : "hovericon ico"} />
+        <PlayCircleFilledIcon fontSize="large" className="hovericon play" />
+        <SkipNextIcon
+          className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
+        />
       </div>
       <div className="footer-right">
         <Grid container spacing={2}>
           <Grid item>
-            <MoodIcon className={(dark)?"hovericon ico ico-dark" : "hovericon ico"} fontSize="small" />
+            <div>
+              <div className={popup ? "popupshow" : "popuphide"}>I am Div</div>
+              <MoodIcon
+                className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
+                fontSize="small"
+                onClick={popout}
+              />
+            </div>
           </Grid>
           <Grid item onClick={HandleClick}>
             <SetIcon />

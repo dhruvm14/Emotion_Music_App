@@ -130,3 +130,21 @@
     bottom: 13px;
 }
 
+.popupshow {
+    position: absolute;
+    bottom: 120%;
+    background-color:#29415A;
+    padding: 20px;
+    right: 75%;
+    color:white;
+    border-radius: 12px;
+    height: 150px;
+    width: 70px;
+}
+
+.popuphide {
+    display: none;
+}
+
+
+
