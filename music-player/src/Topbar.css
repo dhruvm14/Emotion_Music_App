@@ -51,4 +51,5 @@
 .mood {
     position: relative;
     left: 30px;
+    font-weight: 200;
 }

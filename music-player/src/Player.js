@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./Player.css";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -10,8 +10,12 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import MoodDetection from "./MoodDetection";
-
-function Player({ dark,mood,setMood }) {
+import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
+import { songs } from "./songs";
+var i = 0;
+var audio = new Audio(songs[i]);
+function Player({ dark, mood, setMood }) {
+  const [play, setPlay] = useState(false);
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [value, setValue] = useState(30);
@@ -20,9 +24,16 @@ function Player({ dark,mood,setMood }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  function changePlay() {
+    (play) ? audio.pause() : audio.play();
+    setPlay((prev) => !prev);
+  }
+  
   function popout() {
-    setTimeout(setpopup((prev) => !prev), 3000);
+    setTimeout(
+      setpopup((prev) => !prev),
+      3000
+    );
   }
 
   function HandleClick() {
@@ -86,7 +97,11 @@ function Player({ dark,mood,setMood }) {
         <SkipPreviousIcon
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
         />
-        <PlayCircleFilledIcon fontSize="large" className="hovericon play" />
+        {play ? (
+          <PauseCircleFilledIcon onClick={changePlay} fontSize="large" className="hovericon play" />
+        ) : (
+          <PlayCircleFilledIcon onClick={changePlay} fontSize="large" className="hovericon play" />
+        )}
         <SkipNextIcon
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
         />
@@ -96,7 +111,13 @@ function Player({ dark,mood,setMood }) {
           <Grid item>
             <div>
               <div className={popup ? "popupshow" : "popuphide"}>
-                {popup && <MoodDetection popout={popout} mood={mood} setMood={setMood}/>}
+                {popup && (
+                  <MoodDetection
+                    popout={popout}
+                    mood={mood}
+                    setMood={setMood}
+                  />
+                )}
               </div>
               <MoodIcon
                 className={dark ? "hovericon ico ico-dark" : "hovericon ico"}

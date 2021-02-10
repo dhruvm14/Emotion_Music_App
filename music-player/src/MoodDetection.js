@@ -18,7 +18,6 @@ function App({ popout, mood, setMood }) {
           .withFaceExpressions();
         if (detections.length === 0) {
           setMood("No Face Detected");
-          console.log("No Face Detected");
         } else {
           var ans = detections[0].expressions;
           var arr1 = Object.keys(ans);

@@ -17,10 +17,9 @@ function Topbar({ changeMode, dark, mood }) {
       case "fearful" : setEmoji("😖");break;
       case "disgusted" : setEmoji("🤢");break;
       case "surprised" : setEmoji("😲");break;
-      case "No Face Detected" : setEmoji("🚫");break;
       default: setEmoji(" ")
     }
-    return(<h3 className="mood">{emoji}</h3>)
+    return(emoji && <h3 className="mood">{emoji}</h3>)
   };
   return (
     <div className={dark ? "topbar topbar-dark" : "topbar"}>
