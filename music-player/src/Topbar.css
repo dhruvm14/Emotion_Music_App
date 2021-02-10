@@ -13,7 +13,7 @@
 
 .switch{
     position: relative;
-    left: 900px;
+    left: 850px;
     display: flex;
     align-items: center;
     object-fit: contain;
@@ -46,4 +46,9 @@
     background-color: grey;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.mood {
+    position: relative;
+    left: 30px;
 }

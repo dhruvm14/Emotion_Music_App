@@ -1,24 +1,39 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Topbar.css";
 import Switch from "@material-ui/core/Switch";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 
-function Topbar({ changeMode, dark }) {
+
+function Topbar({ changeMode, dark, mood }) {
+  const [emoji,setEmoji] = useState(" ")
+  const ExpressionMap = ()=>{
+    switch(mood)
+    {
+      case "neutral" : setEmoji("😶");break;
+      case "happy" : setEmoji("😄");break;
+      case "sad" : setEmoji("😞");break;
+      case "angry" : setEmoji("🤬");break;
+      case "fearful" : setEmoji("😖");break;
+      case "disgusted" : setEmoji("🤢");break;
+      case "surprised" : setEmoji("😲");break;
+      case "No Face Detected" : setEmoji("🚫");break;
+      default: setEmoji(" ")
+    }
+    return(<h3 className="mood">{emoji}</h3>)
+  };
   return (
-    <div className={(dark)?"topbar topbar-dark" : "topbar"}>
+    <div className={dark ? "topbar topbar-dark" : "topbar"}>
       <img
         className="app-logo"
         src="https://i.imgur.com/VjcL8Wz.png"
         alt="App Logo"
       />
       <h1 className="app-name">Music</h1>
+      {<ExpressionMap/>}
       <div className="switch">
         {dark ? <WbSunnyIcon style={{ color: "white" }} /> : <WbSunnyIcon />}
-        <Switch
-          checked={dark}
-          onChange={changeMode}
-        />
+        <Switch checked={dark} onChange={changeMode} />
         {dark ? (
           <NightsStayIcon style={{ color: "white" }} />
         ) : (

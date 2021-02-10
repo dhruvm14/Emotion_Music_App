@@ -6,14 +6,15 @@ import {useState} from "react"
 
 function App() {
   const [dark,setDark] = useState(false);
+  const [mood, setMood] = useState(null);
   function changeMode()
   {
     setDark(prev=>!prev);
   }
   return <div className="App">
-    <Topbar changeMode={changeMode} dark={dark}/>
-    <Body dark={dark}/>
-    <Player dark={dark}/>
+    <Topbar changeMode={changeMode} dark={dark} mood={mood} />
+    <Body dark={dark} mood={mood}/>
+    <Player dark={dark} mood={mood} setMood={setMood}/>
   </div>;
 }
 

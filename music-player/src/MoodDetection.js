@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as faceapi from "face-api.js";
 import "./MoodDetection.css";
 
-function App({popout}) {
-  const [mood, setMood] = useState(null);
+function App({ popout, mood, setMood }) {
   const [timer, setTimer] = useState(false);
   useEffect(() => {
     Promise.all([
@@ -26,12 +25,11 @@ function App({popout}) {
           var arr2 = Object.values(ans);
           let i = arr2.indexOf(Math.max(...arr2));
           setMood(arr1[i]);
-          console.log(arr1[i]);
           popout();
         }
-      },2000);
+      }, 2000);
     });
-  }, [popout]);
+  }, [popout, setMood]);
   timer && streamCamVideo();
   function streamCamVideo() {
     var constraints = { audio: false, video: { width: 480, height: 360 } };
@@ -53,7 +51,7 @@ function App({popout}) {
       <div id="container">
         <video autoPlay={true} id="videoElement" muted></video>
       </div>
-      {mood && <h1>{mood}</h1>}
+      {mood && <h1>{mood.toUpperCase()}</h1>}
     </div>
   );
 }
