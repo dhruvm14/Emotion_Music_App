@@ -13,7 +13,7 @@ function App() {
     ]).then(setTimer(true));
     let video = document.querySelector("video");
     video.addEventListener("play", () => {
-      setTimeout(async () => {
+      setInterval(async () => {
         const detections = await faceapi
           .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
           .withFaceExpressions();
@@ -28,12 +28,12 @@ function App() {
           setMood(arr1[i]);
           console.log(arr1[i]);
         }
-      }, 2000);
+      }, 1000);
     });
   }, []);
   timer && streamCamVideo();
   function streamCamVideo() {
-    var constraints = { audio: true, video: { width: 480, height: 360 } };
+    var constraints = { audio: false, video: { width: 480, height: 360 } };
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then(function (mediaStream) {
@@ -52,7 +52,7 @@ function App() {
       <div id="container">
         <video autoPlay={true} id="videoElement" muted></video>
       </div>
-      <h1>Mood: {mood}</h1>
+      {mood && <h1>Mood: {mood}</h1>}
     </div>
   );
 }
