@@ -3,8 +3,6 @@ import "./Body.css";
 import Playlists from "./Playlists";
 import Genres from "./Genres";
 function Body({ dark }) {
-  
-
   return (
     <div className={dark ? "body body-dark" : "body"}>
       <div className="body-content">

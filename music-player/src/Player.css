@@ -1,150 +1,153 @@
 .player {
-    background-color: white;
-    position: fixed;
-    bottom: 0;
-    height: 65px;
-    width: 100vw;
-    color:  black;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0px 0px 2px #888888;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+  width: 100vw;
+  color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 0px 2px #888888;
+  z-index: 100;
 }
 
 .player-dark {
-    background-color: black;
-    color: white;
-    box-shadow: 0px 0px 2px black;
+  background-color: black;
+  color: white;
+  box-shadow: 0px 0px 2px black;
 }
 
 .footer-left {
-    flex: 0.25;
-    align-items: center;
+  flex: 0.25;
+  align-items: center;
 }
 
 .song-cover {
-    object-fit: contain;
-    width: 95px;
-    position: absolute;
-    bottom: 60px;
-    left: 50px;
-    margin-right: 20px;
-    border-radius: 10px;
-    box-shadow: -4px 4px 6px grey;
+  object-fit: contain;
+  width: 95px;
+  position: absolute;
+  bottom: 60px;
+  left: 50px;
+  margin-right: 20px;
+  border-radius: 10px;
+  box-shadow: -4px 4px 6px grey;
 }
 
-.song-name, .artist-name {
-    margin: 0;
-    position: relative;
-    top: 35px;
-    left: 40px;
+.song-name,
+.artist-name {
+  margin: 0;
+  position: relative;
+  top: 35px;
+  left: 40px;
 }
 
 .song-name {
-    font-weight: 700;
-    font-size: 0.8rem;
+  font-weight: 700;
+  font-size: 0.8rem;
 }
 
 .artist-name {
-    font-weight: 500;
-    font-size: 0.6rem;
-    color: grey
+  font-weight: 500;
+  font-size: 0.6rem;
+  color: grey;
 }
 
-
 .footer-center {
-    flex: 0.5;
-    padding: 0 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 170px;
-    position: relative;
-    bottom: 23px;
-    border-bottom: 4px solid #F50057;
-    padding-bottom: 60px;
+  flex: 0.5;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 170px;
+  position: relative;
+  bottom: 23px;
+  border-bottom: 4px solid #f50057;
+  padding-bottom: 60px;
 }
 
 .footer-right {
-    width: 250px;
-    flex: 0.25;
-    border: 2px;
-    text-align: center;
-    position: relative;
-    top: 35%;
-    left: 25px;
+  width: 250px;
+  flex: 0.25;
+  border: 2px;
+  text-align: center;
+  position: relative;
+  top: 35%;
+  left: 25px;
 }
 
 .change-volume {
-    width: 70px;
-    position: relative;
-    top: 10px;
-    left: 3px;
+  width: 70px;
+  position: relative;
+  top: 10px;
+  left: 3px;
 }
 
 .rule {
-    border: 1.5px solid;
-    background-color: black;
-    position: relative;
-    bottom: 9px;
-    border-radius: 200px;
+  border: 1.5px solid;
+  background-color: black;
+  position: relative;
+  bottom: 9px;
+  border-radius: 200px;
 }
 
 .rule-dark {
-    background-color: white;
+  background-color: white;
 }
 
 .hovericon:hover {
-    transform: scale(1.2);
-    transition: all 0.2s;
+  transform: scale(1.2);
+  transition: all 0.2s;
 }
 
 .ico {
-    object-fit: contain;
-    padding:3px;
-    border-radius: 50%;
-    background-color: whitesmoke;
-    box-shadow: 0 0 5px grey;
+  object-fit: contain;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  box-shadow: 0 0 5px grey;
 }
 
 .ico-dark {
-    background-color: #5B5B5B;
+  background-color: #5b5b5b;
 }
 
 .play {
-    transform: scale(1.7);
-    color: #F50057;
-    background: radial-gradient(circle, rgba(255,255,255,1) 46%, #F50057 4%);
-    border-radius: 50%;
-    box-shadow: 0 0 2px grey;
+  transform: scale(1.7);
+  color: #f50057;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 46%, #f50057 4%);
+  border-radius: 50%;
+  box-shadow: 0 0 2px grey;
 }
 
 .play:hover {
-    transform: scale(1.9);
-    transition: all 0.2s;
-    color: #F50057;
+  transform: scale(1.9);
+  transition: all 0.2s;
+  color: #f50057;
 }
 
 .slider {
-    position:relative;
-    bottom: 13px;
+  position: relative;
+  bottom: 13px;
 }
 
 .popupshow {
-    position: absolute;
-    bottom: 120%;
-    background-color:#29415A;
-    padding: 20px;
-    right: 50%;
-    color:white;
-    border-radius: 12px;
-    height: 350px;
-    width: 250px;
+  position: absolute;
+  bottom: 120%;
+  background-color: #29415a;
+  padding: 20px;
+  right: 50%;
+  color: white;
+  border-radius: 12px;
+  height: 350px;
+  width: 250px;
+  transition: all 0.2s linear;
+  z-index: -2 !important;
 }
 
 .popuphide {
-    display: none;
+  bottom: 400%;
+  height: 0;
+  width: 0;
+  overflow: hidden;
 }
-
-
-

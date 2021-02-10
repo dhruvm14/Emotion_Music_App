@@ -9,21 +9,20 @@ import MoodIcon from "@material-ui/icons/Mood";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
-import MoodDetection from "./MoodDetection"
+import MoodDetection from "./MoodDetection";
 
 function Player({ dark }) {
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [value, setValue] = useState(30);
   const [value2, setValue2] = useState(0);
-  const [popup,setpopup] = useState(false);
+  const [popup, setpopup] = useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  function popout()
-  {
-    setpopup(prev=>!prev);
+  function popout() {
+    setpopup((prev) => !prev);
   }
 
   function HandleClick() {
@@ -97,7 +96,7 @@ function Player({ dark }) {
           <Grid item>
             <div>
               <div className={popup ? "popupshow" : "popuphide"}>
-                <MoodDetection/>
+                {popup && <MoodDetection />}
               </div>
               <MoodIcon
                 className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
