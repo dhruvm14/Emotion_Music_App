@@ -11,6 +11,12 @@
     box-shadow: 0px 0px 2px #888888;
 }
 
+.player-dark {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 2px black;
+}
+
 .footer-left {
     flex: 0.25;
     align-items: center;
@@ -55,7 +61,7 @@
     max-width: 170px;
     position: relative;
     bottom: 23px;
-    border-bottom: 4px solid #FF5A81;
+    border-bottom: 4px solid #F50057;
     padding-bottom: 60px;
 }
 
@@ -84,6 +90,10 @@
     border-radius: 200px;
 }
 
+.rule-dark {
+    background-color: white;
+}
+
 .hovericon:hover {
     transform: scale(1.2);
     transition: all 0.2s;
@@ -97,10 +107,14 @@
     box-shadow: 0 0 5px grey;
 }
 
+.ico-dark {
+    background-color: #5B5B5B;
+}
+
 .play {
     transform: scale(1.7);
-    color: #FF5A81;
-    background: radial-gradient(circle, rgba(255,255,255,1) 46%, rgba(255,90,129,1) 4%);
+    color: #F50057;
+    background: radial-gradient(circle, rgba(255,255,255,1) 46%, #F50057 4%);
     border-radius: 50%;
     box-shadow: 0 0 2px grey;
 }
@@ -108,10 +122,29 @@
 .play:hover {
     transform: scale(1.9);
     transition: all 0.2s;
-    color: #FF5A81;
+    color: #F50057;
 }
 
 .slider {
     position:relative;
     bottom: 13px;
 }
+
+.popupshow {
+    position: absolute;
+    bottom: 120%;
+    background-color:#29415A;
+    padding: 20px;
+    right: 50%;
+    color:white;
+    border-radius: 12px;
+    height: 350px;
+    width: 250px;
+}
+
+.popuphide {
+    display: none;
+}
+
+
+

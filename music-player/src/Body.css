@@ -3,12 +3,17 @@
   background-size: cover;
   background-repeat: repeat;
   min-height: 100vh;
+  color: grey;
+}
+
+.body-dark {
+  background-image:url('./bgdark.jpg');
+  color: #D2D3D5;
 }
 
 .body-content {
   padding-top: 80px;
   padding-left: 40px;
-  color: grey;
   padding-bottom: 120px;
 }
 
@@ -16,3 +21,4 @@
   font-weight: 700;
   font-size: 1.2rem;
 }
+

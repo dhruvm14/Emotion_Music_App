@@ -8,6 +8,21 @@
     box-shadow: 0px 0px 2px #888888;
     display: flex;
     align-items: center;
+    color: grey;
+}
+
+.switch{
+    position: relative;
+    left: 900px;
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+}
+
+.topbar-dark {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 2px black;
 }
 
 .app-logo  {
@@ -19,7 +34,6 @@
 }
 
 .app-name {
-    color: grey;
     font-weight: 500;
     font-size: 1.5rem;
 }
