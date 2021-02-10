@@ -95,7 +95,9 @@ function Player({ dark }) {
         <Grid container spacing={2}>
           <Grid item>
             <div>
-              <div className={popup ? "popupshow" : "popuphide"}>I am Div</div>
+              <div className={popup ? "popupshow" : "popuphide"}>
+                <h1 className="mood">Mood Detection</h1>
+              </div>
               <MoodIcon
                 className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
                 fontSize="small"
