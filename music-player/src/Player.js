@@ -9,6 +9,7 @@ import MoodIcon from "@material-ui/icons/Mood";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
+import MoodDetection from "./MoodDetection"
 
 function Player({ dark }) {
   const [hover, setHover] = useState(true);
@@ -96,7 +97,7 @@ function Player({ dark }) {
           <Grid item>
             <div>
               <div className={popup ? "popupshow" : "popuphide"}>
-                <h1 className="mood">Mood Detection</h1>
+                <MoodDetection/>
               </div>
               <MoodIcon
                 className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
