@@ -141,7 +141,6 @@
   border-radius: 12px;
   height: 350px;
   width: 250px;
-  transition: all 0.2s linear;
   z-index: -2 !important;
 }
 

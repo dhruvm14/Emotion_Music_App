@@ -96,7 +96,7 @@ function Player({ dark }) {
           <Grid item>
             <div>
               <div className={popup ? "popupshow" : "popuphide"}>
-                {popup && <MoodDetection />}
+                {popup && <MoodDetection popout={popout}/>}
               </div>
               <MoodIcon
                 className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
