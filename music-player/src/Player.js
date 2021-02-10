@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./Player.css";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -12,8 +12,8 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import MoodDetection from "./MoodDetection";
 import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 import { songs } from "./songs";
-var i = 0;
-var audio = new Audio(songs[i]);
+var i = 0, audio;
+audio = new Audio(songs[i]);
 function Player({ dark, mood, setMood }) {
   const [play, setPlay] = useState(false);
   const [hover, setHover] = useState(true);
@@ -25,15 +25,32 @@ function Player({ dark, mood, setMood }) {
     setValue(newValue);
   };
   function changePlay() {
-    (play) ? audio.pause() : audio.play();
+    play ? audio.pause() : audio.play();
     setPlay((prev) => !prev);
   }
-  
+  console.log(audio);
   function popout() {
-    setTimeout(
-      setpopup((prev) => !prev),
-      3000
-    );
+    setpopup((prev) => !prev);
+  }
+
+  function moveNext() {
+    audio.pause();
+    audio = null;
+    console.log(audio);
+    if (i < songs.length-1) i++;
+    audio = new Audio(songs[i]);
+    setPlay(true)
+    audio.play()
+  }
+
+  function movePrev() {
+    audio.pause();
+    audio = null;
+    console.log(audio);
+    if (i > 0) i--;
+    audio = new Audio(songs[i]);
+    setPlay(true);
+    audio.play()
   }
 
   function HandleClick() {
@@ -82,6 +99,7 @@ function Player({ dark, mood, setMood }) {
         />
       );
   }
+  audio.volume = value/100;
   return (
     <div className={dark ? "player player-dark" : "player"}>
       <div className="footer-left">
@@ -96,13 +114,23 @@ function Player({ dark, mood, setMood }) {
       <div className="footer-center">
         <SkipPreviousIcon
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
+          onClick={movePrev}
         />
-        {play ? (
-          <PauseCircleFilledIcon onClick={changePlay} fontSize="large" className="hovericon play" />
+        {!play ? (
+          <PlayCircleFilledIcon
+            onClick={changePlay}
+            fontSize="large"
+            className="hovericon play"
+          />
         ) : (
-          <PlayCircleFilledIcon onClick={changePlay} fontSize="large" className="hovericon play" />
+          <PauseCircleFilledIcon
+            onClick={changePlay}
+            fontSize="large"
+            className="hovericon play"
+          />
         )}
         <SkipNextIcon
+          onClick={moveNext}
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
         />
       </div>

@@ -24,6 +24,7 @@ function App({ popout, mood, setMood }) {
           var arr2 = Object.values(ans);
           let i = arr2.indexOf(Math.max(...arr2));
           setMood(arr1[i]);
+          video.pause();
           popout();
         }
       }, 2000);
