@@ -28,7 +28,6 @@ function Player({ dark, mood, setMood }) {
     play ? audio.pause() : audio.play();
     setPlay((prev) => !prev);
   }
-  console.log(audio);
   function popout() {
     setpopup((prev) => !prev);
   }
@@ -36,7 +35,6 @@ function Player({ dark, mood, setMood }) {
   function moveNext() {
     audio.pause();
     audio = null;
-    console.log(audio);
     if (i < songs.length-1) i++;
     audio = new Audio(songs[i]);
     setPlay(true)
@@ -46,7 +44,6 @@ function Player({ dark, mood, setMood }) {
   function movePrev() {
     audio.pause();
     audio = null;
-    console.log(audio);
     if (i > 0) i--;
     audio = new Audio(songs[i]);
     setPlay(true);
@@ -64,7 +61,6 @@ function Player({ dark, mood, setMood }) {
       setValue(value2);
     }
   }
-
   function SetIcon() {
     if (value >= 60)
       return (
@@ -168,7 +164,6 @@ function Player({ dark, mood, setMood }) {
               ) : (
                 <Slider
                   className="slider"
-                  defaultValue={20}
                   value={value}
                   onChange={handleChange}
                   aria-labelledby="continuous-slider"
