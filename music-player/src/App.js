@@ -5,7 +5,7 @@ import Topbar from "./Topbar"
 import {useState} from "react"
 
 function App() {
-  const [dark,setDark] = useState(false);
+  const [dark,setDark] = useState(true);
   const [mood, setMood] = useState(null);
   function changeMode()
   {

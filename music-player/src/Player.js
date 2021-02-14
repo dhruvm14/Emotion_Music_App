@@ -15,24 +15,8 @@ import { songs } from "./songs";
 var i = 0,
   audio;
 audio = new Audio(songs[i]);
-function Player({ dark, mood, setMood }) {
-  audio.addEventListener("loadeddata", () => {
-    let duration = audio.duration;
-    settotalDuration(duration);
-  });
 
-  audio.addEventListener("timeupdate", () => {
-    document.querySelector(".seekbar").value = audio.currentTime;
-    var cs = parseInt(audio.currentTime % 60);
-    var cm = parseInt((audio.currentTime / 60) % 60);
-    document.querySelector(".cDuration").innerHTML = cm + ":" + cs;
-    if(audio.currentTime === audio.duration) moveNext();
-  });
-
-  function scrub(e) {
-    audio.currentTime = e.target.value;
-  }
-
+function Player({ dark, mood, setMood }) {  
   const [play, setPlay] = useState(false);
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
@@ -40,6 +24,31 @@ function Player({ dark, mood, setMood }) {
   const [value2, setValue2] = useState(0);
   const [popup, setpopup] = useState(false);
   const [totalDuration, settotalDuration] = useState(0);
+
+  audio.addEventListener("loadeddata", () => {
+    let duration = audio.duration;
+    settotalDuration(duration);
+    var cs = parseInt(duration % 60);
+    var cm = parseInt((duration / 60) % 60);
+    if (cs < 10)
+      document.querySelector(".tDuration").innerHTML = cm + ":0" + cs;
+    else document.querySelector(".tDuration").innerHTML = cm + ":" + cs;
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    document.querySelector(".seekbar").value = audio.currentTime;
+    var cs = parseInt(audio.currentTime % 60);
+    var cm = parseInt((audio.currentTime / 60) % 60);
+    if (cs < 10)
+      document.querySelector(".cDuration").innerHTML = cm + ":0" + cs;
+    else document.querySelector(".cDuration").innerHTML = cm + ":" + cs;
+    if (audio.currentTime === audio.duration) moveNext();
+  });
+
+  function scrub(e) {
+    audio.currentTime = e.target.value;
+  }
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -116,6 +125,8 @@ function Player({ dark, mood, setMood }) {
       );
   }
   audio.volume = value / 100;
+
+  //main return statement
   return (
     <div className={dark ? "player player-dark" : "player"}>
       <div className="footer-left">
@@ -158,14 +169,10 @@ function Player({ dark, mood, setMood }) {
             className="seekbar"
             step="0.1"
             min="0"
-            max={(totalDuration)}
+            max={totalDuration}
             onChange={scrub}
           />
-          <p>
-            {(parseInt(totalDuration / 60) % 60) +
-              ":" +
-              parseInt(totalDuration % 60)}
-          </p>
+          <p className="tDuration"></p>
         </div>
       </div>
 
