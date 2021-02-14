@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Player.css";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -16,27 +16,19 @@ var i = 0,
   audio;
 audio = new Audio(songs[i]);
 function Player({ dark, mood, setMood }) {
-  useEffect(() => {
-    audio.addEventListener("play", () => {
-      console.log("Audio Played");
-    });
-
-    audio.addEventListener("pause", () => {
-      console.log("Audio Paused");
-    });
-
-  }, []);
   audio.addEventListener("loadeddata", () => {
     let duration = audio.duration;
     settotalDuration(duration);
   });
 
-  audio.addEventListener("timeupdate",()=>{
+  audio.addEventListener("timeupdate", () => {
     document.querySelector(".seekbar").value = audio.currentTime;
-  })
+    var cs = parseInt(audio.currentTime % 60);
+    var cm = parseInt((audio.currentTime / 60) % 60);
+    document.querySelector(".cDuration").innerHTML = cm + ":" + cs;
+  });
 
   function scrub(e) {
-    console.log(e.target.value);
     audio.currentTime = e.target.value;
   }
 
@@ -159,19 +151,19 @@ function Player({ dark, mood, setMood }) {
           />
         </div>
         <div className="playbar">
-          <p>0:00</p>
+          <p className="cDuration">0:00</p>
           <input
             type="range"
             className="seekbar"
             step="0.1"
             min="0"
-            max={Math.ceil(totalDuration)}
+            max={(totalDuration)}
             onChange={scrub}
           />
           <p>
-            {Math.floor(totalDuration / 60) +
+            {(parseInt(totalDuration / 60) % 60) +
               ":" +
-              Math.ceil(totalDuration % 60)}
+              parseInt(totalDuration % 60)}
           </p>
         </div>
       </div>
