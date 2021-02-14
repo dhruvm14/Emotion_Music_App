@@ -26,6 +26,7 @@ function Player({ dark, mood, setMood }) {
     var cs = parseInt(audio.currentTime % 60);
     var cm = parseInt((audio.currentTime / 60) % 60);
     document.querySelector(".cDuration").innerHTML = cm + ":" + cs;
+    if(audio.currentTime === audio.duration) moveNext();
   });
 
   function scrub(e) {
