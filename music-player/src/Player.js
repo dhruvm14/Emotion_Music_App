@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Player.css";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -12,18 +12,45 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import MoodDetection from "./MoodDetection";
 import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 import { songs } from "./songs";
-var i = 0, audio;
+var i = 0,
+  audio;
 audio = new Audio(songs[i]);
 function Player({ dark, mood, setMood }) {
+  useEffect(() => {
+    audio.addEventListener("play", () => {
+      console.log("Audio Played");
+    });
+
+    audio.addEventListener("pause", () => {
+      console.log("Audio Paused");
+    });
+
+  }, []);
+  audio.addEventListener("loadeddata", () => {
+    let duration = audio.duration;
+    settotalDuration(duration);
+  });
+
+  audio.addEventListener("timeupdate",()=>{
+    document.querySelector(".seekbar").value = audio.currentTime;
+  })
+
+  function scrub(e) {
+    console.log(e.target.value);
+    audio.currentTime = e.target.value;
+  }
+
   const [play, setPlay] = useState(false);
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [value, setValue] = useState(30);
   const [value2, setValue2] = useState(0);
   const [popup, setpopup] = useState(false);
+  const [totalDuration, settotalDuration] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   function changePlay() {
     play ? audio.pause() : audio.play();
     setPlay((prev) => !prev);
@@ -34,20 +61,20 @@ function Player({ dark, mood, setMood }) {
 
   function moveNext() {
     audio.pause();
-    audio = null;
-    if (i < songs.length-1) i++;
+    if (i < songs.length - 1) i++;
     audio = new Audio(songs[i]);
-    setPlay(true)
-    audio.play()
+    document.querySelector(".seekbar").value = 0;
+    setPlay(true);
+    audio.play();
   }
 
   function movePrev() {
     audio.pause();
-    audio = null;
     if (i > 0) i--;
     audio = new Audio(songs[i]);
+    document.querySelector(".seekbar").value = 0;
     setPlay(true);
-    audio.play()
+    audio.play();
   }
 
   function HandleClick() {
@@ -95,7 +122,7 @@ function Player({ dark, mood, setMood }) {
         />
       );
   }
-  audio.volume = value/100;
+  audio.volume = value / 100;
   return (
     <div className={dark ? "player player-dark" : "player"}>
       <div className="footer-left">
@@ -108,28 +135,47 @@ function Player({ dark, mood, setMood }) {
         <p className="artist-name">Taylor Swift</p>
       </div>
       <div className="footer-center">
-        <SkipPreviousIcon
-          className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
-          onClick={movePrev}
-        />
-        {!play ? (
-          <PlayCircleFilledIcon
-            onClick={changePlay}
-            fontSize="large"
-            className="hovericon play"
+        <div className="play-controls">
+          <SkipPreviousIcon
+            className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
+            onClick={movePrev}
           />
-        ) : (
-          <PauseCircleFilledIcon
-            onClick={changePlay}
-            fontSize="large"
-            className="hovericon play"
+          {!play ? (
+            <PlayCircleFilledIcon
+              onClick={changePlay}
+              fontSize="large"
+              className="hovericon play"
+            />
+          ) : (
+            <PauseCircleFilledIcon
+              onClick={changePlay}
+              fontSize="large"
+              className="hovericon play"
+            />
+          )}
+          <SkipNextIcon
+            onClick={moveNext}
+            className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
           />
-        )}
-        <SkipNextIcon
-          onClick={moveNext}
-          className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
-        />
+        </div>
+        <div className="playbar">
+          <p>0:00</p>
+          <input
+            type="range"
+            className="seekbar"
+            step="0.1"
+            min="0"
+            max={Math.ceil(totalDuration)}
+            onChange={scrub}
+          />
+          <p>
+            {Math.floor(totalDuration / 60) +
+              ":" +
+              Math.ceil(totalDuration % 60)}
+          </p>
+        </div>
       </div>
+
       <div className="footer-right">
         <Grid container spacing={2}>
           <Grid item>
