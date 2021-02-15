@@ -1,8 +1,6 @@
 export const songs = [
   "https://aac.saavncdn.com/367/c5de371dc840f6fd7d55d8b1fecefa0c_320.mp4",
-  "https://aac.saavncdn.com/557/08c7203ad3d795bac65733b52361b458_320.mp4",
   "https://aac.saavncdn.com/569/bd7c23f639f3f509012fc8a642b89138_320.mp4",
-  "https://aac.saavncdn.com/127/9799c43d59690bf85697ab13f88e7e29_320.mp4",
   "https://aac.saavncdn.com/569/e3a5c876972080a18a738fa84748fb9a_320.mp4",
   "https://aac.saavncdn.com/937/b239e33cb0d4e3d6a988964d214639ff_320.mp4",
   "https://aac.saavncdn.com/807/1ad57f8c99bc8c1623964b1b922e44f4_320.mp4",
