@@ -61,7 +61,7 @@ export default function SignUp() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    // console.log(details);
+    //console.log(details);
     async function post() {
       axios
         .post("http://localhost:5000/users/register", details)

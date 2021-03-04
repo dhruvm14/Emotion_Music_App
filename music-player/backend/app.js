@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 // const exercisesRouter = require("./routes/exercises");
 const usersRouter = require("./routes/users");
 
@@ -8,12 +9,14 @@ require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
+const uri2 = "mongodb://localhost:27017/userDB";
+mongoose.connect(uri2, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
