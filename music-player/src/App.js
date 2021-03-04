@@ -12,7 +12,7 @@ function App() {
     setDark(prev=>!prev);
   }
   return <div className="App">
-    <Topbar changeMode={changeMode} dark={dark} mood={mood} />
+    <Topbar changeMode={changeMode} dark={dark} mood={mood}/>
     <Body dark={dark} mood={mood}/>
     <Player dark={dark} mood={mood} setMood={setMood}/>
   </div>;

@@ -15,4 +15,15 @@ router.route("/register").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/login").post((req, res) => {
+  User.findOne({ email: req.body.email }, (err, rec) => {
+    if (err) res.status(400).json("Error: " + err)
+    else {
+      if (rec.password === md5(req.body.password))
+        res.json("Record Present!")
+      else res.json("Password Is Wrong!");
+    }
+  });
+});
+
 module.exports = router;

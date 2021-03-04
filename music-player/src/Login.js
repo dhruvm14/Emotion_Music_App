@@ -10,7 +10,9 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
+import axios from "axios";
+//import { BrowserRouter } from 'react-router-dom';
+import { Redirect } from 'react-router'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -44,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn({i,si}) {
+  
   const [details, setDetails] = useState({
     email: "",
     password: "",
@@ -58,9 +61,20 @@ export default function SignIn() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(details);
+    async function post() {
+      axios.post("http://localhost:5000/users/login", details).then((res) => {
+        //alert(res.data)
+        if (res.data === "Record Present!") si(true);
+        else alert(res.data)
+      });
+    }
+    post();
   }
   const classes = useStyles();
 
+  if (i) {
+    return <Redirect to='/app'/>;
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
