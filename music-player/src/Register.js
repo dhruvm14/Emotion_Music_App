@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import axios from "axios";
 
 function Copyright() {
   return (
@@ -60,7 +61,13 @@ export default function SignUp() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(details);
+    // console.log(details);
+    async function post() {
+      axios
+        .post("http://localhost:5000/users/register", details)
+        .then((res) => console.log(res.data));
+    }
+    post();
   }
   return (
     <Container component="main" maxWidth="xs">
