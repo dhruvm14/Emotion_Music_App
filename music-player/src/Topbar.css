@@ -12,8 +12,8 @@
 }
 
 .switch{
-    position: relative;
-    left: 850px;
+    position: absolute;
+    right: 13%;
     display: flex;
     align-items: center;
     object-fit: contain;

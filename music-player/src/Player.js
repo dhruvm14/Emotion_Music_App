@@ -16,7 +16,7 @@ var i = 0,
   audio;
 audio = new Audio(songs[i]);
 
-function Player({ dark, mood, setMood }) {  
+function Player({ dark, mood, setMood }) {
   const [play, setPlay] = useState(false);
   const [hover, setHover] = useState(true);
   const [clicked, setClicked] = useState(false);
@@ -49,7 +49,7 @@ function Player({ dark, mood, setMood }) {
     audio.currentTime = e.target.value;
   }
 
-  const handleChange = (event, newValue) => {
+  const handleVolume = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -211,7 +211,7 @@ function Player({ dark, mood, setMood }) {
                 <Slider
                   className="slider"
                   value={value}
-                  onChange={handleChange}
+                  onChange={handleVolume}
                   aria-labelledby="continuous-slider"
                   style={{ color: "#F50057" }}
                 />

@@ -64,6 +64,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 170px;
+  min-width: 120px;
   position: relative;
   bottom: 35px;
   left: 19%;
@@ -134,7 +135,6 @@ input[type="range"]::-ms-thumb {
   border-radius: 100%;
 }
 
-
 .footer-right {
   width: 250px;
   flex: 0.25;
@@ -146,7 +146,8 @@ input[type="range"]::-ms-thumb {
 }
 
 .change-volume {
-  width: 70px;
+  max-width: 130px;
+  min-width:60px;
   position: relative;
   top: 10px;
   left: 3px;
@@ -208,7 +209,7 @@ input[type="range"]::-ms-thumb {
   right: 50%;
   color: white;
   border-radius: 12px;
-  height: 350px;
+  height: 230px;
   width: 250px;
   z-index: -2 !important;
 }
