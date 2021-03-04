@@ -4,7 +4,8 @@ import HomePage from "./HomePage";
 import Login from "./Login";
 import Register from "./Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import NotFound from "./NotFound";
+import Protected from "./Protected"
 function Home() {
   const [i, si] = useState(false);
   return (
@@ -12,7 +13,7 @@ function Home() {
       <div>
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/app" exact component={() => i && <App/>} />
+          <Route path="/app" exact component={() => i ? <App /> : <Protected/>} />
           <Route
             path="/login"
             exact
@@ -23,6 +24,7 @@ function Home() {
             exact
             component={() => <Register i={i} si={si} />}
           />
+          <Route component={() => <NotFound/>} />
         </Switch>
       </div>
     </Router>
