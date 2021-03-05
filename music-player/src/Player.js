@@ -10,9 +10,12 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import MoodDetection from "./MoodDetection";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 import { songs } from "./songs";
-var i = 0, audio;
+var i = 0,
+  audio;
 audio = new Audio(songs[i]);
 function Player({ dark, mood, setMood }) {
   const [play, setPlay] = useState(false);
@@ -21,6 +24,7 @@ function Player({ dark, mood, setMood }) {
   const [value, setValue] = useState(30);
   const [value2, setValue2] = useState(0);
   const [popup, setpopup] = useState(false);
+  const [songNumber, setsongNumber] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -33,21 +37,22 @@ function Player({ dark, mood, setMood }) {
   }
 
   function moveNext() {
-    audio.pause();
-    audio = null;
-    if (i < songs.length-1) i++;
-    audio = new Audio(songs[i]);
-    setPlay(true)
-    audio.play()
+    // audio.pause();
+    // audio = null;
+    if (songNumber < songs.length - 1) setsongNumber(songNumber + 1);
+    // audio = new Audio(songs[i]);
+    // setPlay(true);
+    // audio.play();
   }
 
   function movePrev() {
-    audio.pause();
-    audio = null;
-    if (i > 0) i--;
-    audio = new Audio(songs[i]);
-    setPlay(true);
-    audio.play()
+    // audio.pause();
+    // audio = null;
+    // if (i > 0) i--;
+    // audio = new Audio(songs[i]);
+    // setPlay(true);
+    // audio.play();
+    if (songNumber > 0) setsongNumber(songNumber - 1);
   }
 
   function HandleClick() {
@@ -95,7 +100,7 @@ function Player({ dark, mood, setMood }) {
         />
       );
   }
-  audio.volume = value/100;
+  audio.volume = value / 100;
   return (
     <div className={dark ? "player player-dark" : "player"}>
       <div className="footer-left">
@@ -108,7 +113,7 @@ function Player({ dark, mood, setMood }) {
         <p className="artist-name">Taylor Swift</p>
       </div>
       <div className="footer-center">
-        <SkipPreviousIcon
+        {/* <SkipPreviousIcon
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
           onClick={movePrev}
         />
@@ -125,11 +130,25 @@ function Player({ dark, mood, setMood }) {
             className="hovericon play"
           />
         )}
+         */}
+        <SkipPreviousIcon
+          className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
+          onClick={movePrev}
+        />
+        <AudioPlayer
+          src={songs[songNumber]}
+          onPlay={(e) => console.log("onPlay")}
+          onClickNext={moveNext}
+          // other props here
+          showJumpControls={false}
+        />
         <SkipNextIcon
           onClick={moveNext}
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
         />
       </div>
+      {/* <ReactAudioPlayer src={songs[i]} controls /> */}
+
       <div className="footer-right">
         <Grid container spacing={2}>
           <Grid item>
@@ -166,7 +185,7 @@ function Player({ dark, mood, setMood }) {
                   className="slider"
                   value={value}
                   onChange={handleChange}
-                  aria-labelledby="continuous-slider"
+                  aria-label="continuous-slider"
                   style={{ color: "#F50057" }}
                 />
               )}
