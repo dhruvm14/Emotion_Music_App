@@ -14,9 +14,9 @@ app.use(cors());
 app.options("*", cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
+const uri = process.env.AT_URI;
 const uri2 = "mongodb://localhost:27017/userDB";
-mongoose.connect(uri2, {
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

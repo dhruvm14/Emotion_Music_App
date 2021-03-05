@@ -1,13 +1,20 @@
 import React from "react";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
+import {bgs} from "./songs"
 const linkstyle = {
   textDecoration: "none",
 };
 
+
+
 function Login() {
+  var x = Math.floor(Math.random() * bgs.length);
+  const styles = {
+    backgroundImage:`url(${bgs[x]})`,
+  };
   return (
-    <div className="login">
+    <div className="login" style={styles}>
       <img
         className="login-logo"
         src="https://i.imgur.com/VjcL8Wz.png"

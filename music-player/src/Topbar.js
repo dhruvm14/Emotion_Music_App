@@ -11,7 +11,7 @@ const linkstyle = {
   height: "0"
 };
 
-function Topbar({ changeMode, dark, mood }) {
+function Topbar({ changeMode, dark, mood}) {
   const [emoji, setEmoji] = useState(" ");
   const ExpressionMap = () => {
     switch (mood) {

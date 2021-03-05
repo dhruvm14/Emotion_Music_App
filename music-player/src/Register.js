@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp({i,si}) {
+export default function SignUp({ i, si }) {
   const [details, setDetails] = useState({
     firstName: "",
     lastName: "",
@@ -66,8 +66,9 @@ export default function SignUp({i,si}) {
       axios
         .post("http://localhost:5000/users/register", details)
         .then((res) => {
+          console.log(res.data);
           if (res.data === "User added!") si(true);
-          else alert("Error Occurred")
+          else alert("Error Occurred");
         });
     }
     post();
