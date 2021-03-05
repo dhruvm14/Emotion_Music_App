@@ -17,6 +17,7 @@ import { songs } from "./songs";
 var i = 0,
   audio;
 audio = new Audio(songs[i]);
+
 function Player({ dark, mood, setMood }) {
   const [play, setPlay] = useState(false);
   const [hover, setHover] = useState(true);
@@ -24,10 +25,41 @@ function Player({ dark, mood, setMood }) {
   const [value, setValue] = useState(30);
   const [value2, setValue2] = useState(0);
   const [popup, setpopup] = useState(false);
+<<<<<<< HEAD
   const [songNumber, setsongNumber] = useState(0);
   const handleChange = (event, newValue) => {
+=======
+  const [totalDuration, settotalDuration] = useState(0);
+
+  audio.addEventListener("loadeddata", () => {
+    let duration = audio.duration;
+    settotalDuration(duration);
+    var cs = parseInt(duration % 60);
+    var cm = parseInt((duration / 60) % 60);
+    if (cs < 10)
+      document.querySelector(".tDuration").innerHTML = cm + ":0" + cs;
+    else document.querySelector(".tDuration").innerHTML = cm + ":" + cs;
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    document.querySelector(".seekbar").value = audio.currentTime;
+    var cs = parseInt(audio.currentTime % 60);
+    var cm = parseInt((audio.currentTime / 60) % 60);
+    if (cs < 10)
+      document.querySelector(".cDuration").innerHTML = cm + ":0" + cs;
+    else document.querySelector(".cDuration").innerHTML = cm + ":" + cs;
+    if (audio.currentTime === audio.duration) moveNext();
+  });
+
+  function scrub(e) {
+    audio.currentTime = e.target.value;
+  }
+
+  const handleVolume = (event, newValue) => {
+>>>>>>> a5bffd13c73e934104e2aaed73d094126b2c38f2
     setValue(newValue);
   };
+
   function changePlay() {
     play ? audio.pause() : audio.play();
     setPlay((prev) => !prev);
@@ -37,6 +69,7 @@ function Player({ dark, mood, setMood }) {
   }
 
   function moveNext() {
+<<<<<<< HEAD
     // audio.pause();
     // audio = null;
     if (songNumber < songs.length - 1) setsongNumber(songNumber + 1);
@@ -53,6 +86,23 @@ function Player({ dark, mood, setMood }) {
     // setPlay(true);
     // audio.play();
     if (songNumber > 0) setsongNumber(songNumber - 1);
+=======
+    audio.pause();
+    if (i < songs.length - 1) i++;
+    audio = new Audio(songs[i]);
+    document.querySelector(".seekbar").value = 0;
+    setPlay(true);
+    audio.play();
+  }
+
+  function movePrev() {
+    audio.pause();
+    if (i > 0) i--;
+    audio = new Audio(songs[i]);
+    document.querySelector(".seekbar").value = 0;
+    setPlay(true);
+    audio.play();
+>>>>>>> a5bffd13c73e934104e2aaed73d094126b2c38f2
   }
 
   function HandleClick() {
@@ -101,6 +151,11 @@ function Player({ dark, mood, setMood }) {
       );
   }
   audio.volume = value / 100;
+<<<<<<< HEAD
+=======
+
+  //main return statement
+>>>>>>> a5bffd13c73e934104e2aaed73d094126b2c38f2
   return (
     <div className={dark ? "player player-dark" : "player"}>
       <div className="footer-left">
@@ -113,6 +168,7 @@ function Player({ dark, mood, setMood }) {
         <p className="artist-name">Taylor Swift</p>
       </div>
       <div className="footer-center">
+<<<<<<< HEAD
         {/* <SkipPreviousIcon
           className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
           onClick={movePrev}
@@ -122,13 +178,31 @@ function Player({ dark, mood, setMood }) {
             onClick={changePlay}
             fontSize="large"
             className="hovericon play"
+=======
+        <div className="play-controls">
+          <SkipPreviousIcon
+            className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
+            onClick={movePrev}
+>>>>>>> a5bffd13c73e934104e2aaed73d094126b2c38f2
           />
-        ) : (
-          <PauseCircleFilledIcon
-            onClick={changePlay}
-            fontSize="large"
-            className="hovericon play"
+          {!play ? (
+            <PlayCircleFilledIcon
+              onClick={changePlay}
+              fontSize="large"
+              className="hovericon play"
+            />
+          ) : (
+            <PauseCircleFilledIcon
+              onClick={changePlay}
+              fontSize="large"
+              className="hovericon play"
+            />
+          )}
+          <SkipNextIcon
+            onClick={moveNext}
+            className={dark ? "hovericon ico ico-dark" : "hovericon ico"}
           />
+<<<<<<< HEAD
         )}
          */}
         <SkipPreviousIcon
@@ -148,6 +222,22 @@ function Player({ dark, mood, setMood }) {
         />
       </div>
       {/* <ReactAudioPlayer src={songs[i]} controls /> */}
+=======
+        </div>
+        <div className="playbar">
+          <p className="cDuration">0:00</p>
+          <input
+            type="range"
+            className="seekbar"
+            step="0.1"
+            min="0"
+            max={totalDuration}
+            onChange={scrub}
+          />
+          <p className="tDuration"></p>
+        </div>
+      </div>
+>>>>>>> a5bffd13c73e934104e2aaed73d094126b2c38f2
 
       <div className="footer-right">
         <Grid container spacing={2}>
@@ -184,8 +274,13 @@ function Player({ dark, mood, setMood }) {
                 <Slider
                   className="slider"
                   value={value}
+<<<<<<< HEAD
                   onChange={handleChange}
                   aria-label="continuous-slider"
+=======
+                  onChange={handleVolume}
+                  aria-labelledby="continuous-slider"
+>>>>>>> a5bffd13c73e934104e2aaed73d094126b2c38f2
                   style={{ color: "#F50057" }}
                 />
               )}
